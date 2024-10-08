@@ -17,29 +17,31 @@ const GoalsList = () => {
 
   return (
     <Container>
-    <div>
-      <h2>Your Goals</h2>
-      <input 
-        type="text" 
-        value={goalText} 
-        onChange={(e) => setGoalText(e.target.value)} 
-        placeholder="Write your goal" 
-      />
-      <button onClick={handleAddGoal}>Add Goal</button>
-      <ul>
-        {goals.map((goal) => (
-          <li key={goal.id}>
-            <span style={{ textDecoration: goal.completed ? 'line-through' : 'none' }}>
-              {goal.text}
-            </span>
-            <button onClick={() => dispatch(toggleGoal(goal.id))}>
-              {goal.completed ? 'Undo' : 'Complete'}
-            </button>
-            <button onClick={() => dispatch(deleteGoal(goal.id))}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+      <div>
+        <h2 class='heading2'>Your Goals</h2>
+        <div id="form">
+        <input
+          type="text"
+          value={goalText}
+          onChange={(e) => setGoalText(e.target.value)}
+          placeholder="Write your goal"
+        />
+        <button onClick={handleAddGoal}>Add Goal</button>
+        </div>
+        <ul>
+          {goals.map((goal) => (
+            <li key={goal.id}>
+              <span style={{ textDecoration: goal.completed ? 'line-through' : 'none' }}>
+                {goal.text}
+              </span>
+              <button class="complete" onClick={() => dispatch(toggleGoal(goal.id))}>
+                {goal.completed ? 'Undo' : 'Complete'}
+              </button>
+              <button class="delete" onClick={() => dispatch(deleteGoal(goal.id))}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </Container>
   );
 };
@@ -56,7 +58,11 @@ const Container = styled.div`
 
 h2
   {text-align: center;
-  color: #333;}
+  font-size: 30px;
+  font-weight: 600;
+  color: #fdfdfe;
+  text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+    0px 0px 20px #b393d3;}
 
 
 ul li
@@ -68,18 +74,38 @@ ul li
   &:last-child {
     border-bottom: none;}
 
-button
- { padding: 5px 10px;
+div #form{
+ background-color: purple;
+  color: white;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
-  &.complete {
-    background-color: #28a745;
+}
+ 
+.complete {
+    background-color: purple;
     color: white;
+       padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+    &:hover {
+    background-color: plum;
+  
   }
-  &.delete {
-    background-color: #dc3545;
+  }
+
+.delete {
+    background-color: crimson;
     color: white;
-}}
+    padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+    &:hover {
+    background-color: red;
+     
+  }
+}
 `;

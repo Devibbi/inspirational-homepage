@@ -38,9 +38,10 @@ const ImageGallery = () => {
           <img
             src={images.data[currentImageIndex].urls.regular}
             alt="Inspirational"
-            style={{ width: '100%', height: 'auto' }}
+            style={{ width: '75%', height: '600px', }}
           />
-          <button onClick={prevImage}>Previous</button>
+          <br></br>
+          <button onClick={prevImage}>Prev</button>
           <button onClick={nextImage}>Next</button>
         </div>
       )}
@@ -52,8 +53,17 @@ const ImageGallery = () => {
 export default ImageGallery;
 const Container= styled.div`
 img{
-max-height:20%;
-width:90%;
-}
+border-radius:10px;}
+button{
+ background-color: purple;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: plum;
+  }}
+
 
 `;
